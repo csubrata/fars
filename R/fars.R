@@ -115,7 +115,6 @@ fars_summarize_years <- function(years) {
 #' graphics points
 #'
 #' @examples
-#' fars_state_data <- fars_map_state(state, year)
 #' fars_state_data <- fars_map_state(10, 2021)
 #'
 #' @export
