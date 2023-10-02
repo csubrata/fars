@@ -22,7 +22,6 @@ Read the Fatality Analysis Report Data
 This function raise errors when external library is not installed or invoked using library() function
 }
 \examples{
-fars_data <- fars_read(filename)
-fars_data <- fars_read("./fars_data.csv")
+fars_data <- fars_read("accident_2013.csv.bz2")
 
 }

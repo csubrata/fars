@@ -1,3 +1,7 @@
+library(dplyr)
+library(tidyr)
+library(readr)
+library(maps)
 #' Read the Fatality Analysis Report Data
 #'
 #' @param filename A csv file that contains the Fatality Analysis report from the US National Highway Safety Administration
@@ -7,8 +11,7 @@
 #' @source The source data is hosted on https://d3c33hcgiwev3.cloudfront.net
 #'
 #' @examples
-#' fars_data <- fars_read(filename)
-#' fars_data <- fars_read("./fars_data.csv")
+#' fars_data <- fars_read("accident_2013.csv.bz2")
 #'
 #' @details This function raise errors when external library is not installed or invoked using library() function
 #'
@@ -16,6 +19,7 @@
 #'
 #' @export
 fars_read <- function(filename) {
+        filename = paste0("/Users/dreamland/Documents/R/fars/data/", filename)
         if(!file.exists(filename))
                 stop("file '", filename, "' does not exist")
         data <- suppressMessages({
@@ -33,8 +37,7 @@ fars_read <- function(filename) {
 #' @details this function raise errors when year is passed as non-numeric value
 #'
 #' @examples
-#' filename <- make_filename(year)
-#' filename <- make_filename(2023)
+#' filename <- make_filename(2013)
 #'
 #' @export
 make_filename <- function(year) {
@@ -49,8 +52,7 @@ make_filename <- function(year) {
 #' @return This function returns a dataframe month and year after resetting the year column with provided year
 #'
 #' @examples
-#' fars_data <- fars_read_years(years)
-#' fars_data <- fars_read_years(c(2021,2022))
+#' fars_data <- fars_read_years(c(2013,2014))
 #'
 #' @details This function raise errors when year value is invalid
 #'
@@ -88,10 +90,10 @@ fars_read_years <- function(years) {
 #' tidyr spread
 #'
 #' @examples
-#' summary <- fars_summarize_years(years)
-#' summary <- fars_summarize_years(c(2021,2022))
+#' summary <- fars_summarize_years(c(2013,2014))
 #'
 #' @export
+
 fars_summarize_years <- function(years) {
         dat_list <- fars_read_years(years)
         dplyr::bind_rows(dat_list) %>%
@@ -115,7 +117,7 @@ fars_summarize_years <- function(years) {
 #' graphics points
 #'
 #' @examples
-#' fars_state_data <- fars_map_state(10, 2021)
+#' fars_state_data <- fars_map_state(10, 2013)
 #'
 #' @export
 fars_map_state <- function(state.num, year) {

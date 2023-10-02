@@ -19,7 +19,6 @@ This function will reset the year column with provided year
 This function raise errors when year value is invalid
 }
 \examples{
-fars_data <- fars_read_years(years)
-fars_data <- fars_read_years(c(2021,2022))
+fars_data <- fars_read_years(c(2013,2014))
 
 }

@@ -21,7 +21,6 @@ This function maps state number and returns data for the state
 This function raise errors when external library is not installed or invoked using library() function
 }
 \examples{
-fars_state_data <- fars_map_state(state, year)
-fars_state_data <- fars_map_state(10, 2021)
+fars_state_data <- fars_map_state(10, 2013)
 
 }

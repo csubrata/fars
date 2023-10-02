@@ -19,7 +19,6 @@ Generate file name from year
 this function raise errors when year is passed as non-numeric value
 }
 \examples{
-filename <- make_filename(year)
-filename <- make_filename(2023)
+filename <- make_filename(2013)
 
 }
