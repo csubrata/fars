@@ -2,6 +2,8 @@ library(dplyr)
 library(tidyr)
 library(readr)
 library(maps)
+library(tidyverse)
+library(graphics)
 #' Read the Fatality Analysis Report Data
 #'
 #' @param filename A csv file that contains the Fatality Analysis report from the US National Highway Safety Administration
@@ -15,17 +17,16 @@ library(maps)
 #'
 #' @details This function raise errors when external library is not installed or invoked using library() function
 #'
-#' @importFrom readr read_csv
-#'
+#' @importFrom tidyverse read_csv
 #' @export
 fars_read <- function(filename) {
         filename = paste0("/Users/dreamland/Documents/R/fars/data/", filename)
         if(!file.exists(filename))
                 stop("file '", filename, "' does not exist")
         data <- suppressMessages({
-                readr::read_csv(filename, progress = FALSE)
+                tidyverse:::read_csv(filename, progress = FALSE)
         })
-        dplyr::tbl_df(data)
+        tbl_df(data)
 }
 
 #' Generate file name from year
@@ -66,8 +67,8 @@ fars_read_years <- function(years) {
                 file <- make_filename(year)
                 tryCatch({
                         dat <- fars_read(file)
-                        dplyr::mutate(dat, year = year) %>%
-                                dplyr::select(MONTH, year)
+                        mutate(dat, year = year) %>%
+                                select(MONTH, year)
                 }, error = function(e) {
                         warning("invalid year: ", year)
                         return(NULL)
@@ -96,10 +97,10 @@ fars_read_years <- function(years) {
 
 fars_summarize_years <- function(years) {
         dat_list <- fars_read_years(years)
-        dplyr::bind_rows(dat_list) %>%
-                dplyr::group_by(dat_list$year, dat_list$MONTH) %>%
-                dplyr::summarize(n = n()) %>%
-                tidyr::spread(dat_list$year, n)
+        bind_rows(dat_list) %>%
+            group_by(dat_list$year, dat_list$MONTH) %>%
+            summarize(n = n()) %>%
+            spread(dat_list$year, n)
 }
 
 #' This function maps state number and returns data for the state
@@ -127,7 +128,7 @@ fars_map_state <- function(state.num, year) {
 
         if(!(state.num %in% unique(data$STATE)))
                 stop("invalid STATE number: ", state.num)
-        data.sub <- dplyr::filter(data, STATE == state.num)
+        data.sub <- filter(data, STATE == state.num)
         if(nrow(data.sub) == 0L) {
                 message("no accidents to plot")
                 return(invisible(NULL))
@@ -135,8 +136,8 @@ fars_map_state <- function(state.num, year) {
         is.na(data.sub$LONGITUD) <- data.sub$LONGITUD > 900
         is.na(data.sub$LATITUDE) <- data.sub$LATITUDE > 90
         with(data.sub, {
-                maps::map("state", ylim = range(LATITUDE, na.rm = TRUE),
+                map("state", ylim = range(LATITUDE, na.rm = TRUE),
                           xlim = range(LONGITUD, na.rm = TRUE))
-                graphics::points(LONGITUD, LATITUDE, pch = 46)
+                points(LONGITUD, LATITUDE, pch = 46)
         })
 }

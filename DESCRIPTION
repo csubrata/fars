@@ -1,14 +1,14 @@
 Package: fars
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
+Title: Coursera's Building an R Package
+Version: 1.0.0
 Author: Subrata Baguli
 Maintainer: The package maintainer <subrata.bagulo@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: The GNU General Public License (GPL)
+Description: This is the final Peer-graded Assignment from Coursera's Building an R Package.
+License: CC0
 Encoding: UTF-8
 LazyData: true
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Suggests: 
     knitr,
