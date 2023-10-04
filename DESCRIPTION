@@ -14,7 +14,9 @@ Imports:
    dplyr,
    maps,
    readr,
-   tidyr
+   tidyr,
+   testthat,
+   tibble
 Suggests: 
     knitr,
     rmarkdown
