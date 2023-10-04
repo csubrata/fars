@@ -14,7 +14,9 @@
 #' ars_data <- fars_read("accident_2014.csv.bz2")
 #' ars_data <- fars_read("accident_2015.csv.bz2")
 #'}
-#' @importFrom readr read_csv
+#' @importFrom
+#' readr read_csv
+#' tibble as_tibble
 #'
 #' @details This function raise errors when external library is not installed or invoked using library() function
 #'
