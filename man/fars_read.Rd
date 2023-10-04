@@ -3,10 +3,6 @@
 \name{fars_read}
 \alias{fars_read}
 \title{Read the Fatality Analysis Report Data}
-\format{
-\subsection{\code{accident_2013.csv.bz2}}{
-}
-}
 \source{
 The source data is hosted on https://d3c33hcgiwev3.cloudfront.net
 }
