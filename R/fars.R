@@ -20,13 +20,13 @@
 #'
 #' @export
 fars_read <- function(filename) {
-  filename = paste0("/Users/dreamland/Documents/R/fars/data/", filename)
-  if(!file.exists(filename))
+  filepath = paste0("/Users/dreamland/Documents/R/fars/data/", filename)
+  if(!file.exists(filepath))
     stop("file '", filename, "' does not exist")
   data <- suppressMessages({
-    readr::read_csv(filename, progress = FALSE)
+    readr::read_csv(filepath, progress = FALSE)
   })
-  dplyr::tbl_df(data)
+  tibble::as_tibble(data)
 }
 
 #' Generate file name from year
