@@ -21,11 +21,10 @@
 #'
 #' @export
 fars_read <- function(filename) {
-  filepath = paste0("/Users/dreamland/Documents/R/fars/data/", filename)
-  if(!file.exists(filepath))
+  if(!file.exists(filename))
     stop("file '", filename, "' does not exist")
   data <- suppressMessages({
-    readr::read_csv(filepath, progress = FALSE)
+    readr::read_csv(filename, progress = FALSE)
   })
   tibble::as_tibble(data)
 }
