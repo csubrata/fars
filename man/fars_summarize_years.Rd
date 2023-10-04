@@ -19,6 +19,8 @@ This function summarizes fars data, group by year and month, and finally spread 
 This function raise errors when external library is not installed or invoked using library() function
 }
 \examples{
+\dontrun{
 summary <- fars_summarize_years(c(2013,2014))
+}
 
 }

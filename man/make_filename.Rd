@@ -19,6 +19,8 @@ Generate file name from year
 this function raise errors when year is passed as non-numeric value
 }
 \examples{
+\dontrun{
 filename <- make_filename(2013)
+}
 
 }

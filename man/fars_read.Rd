@@ -3,6 +3,10 @@
 \name{fars_read}
 \alias{fars_read}
 \title{Read the Fatality Analysis Report Data}
+\format{
+\subsection{\code{accident_2013.csv.bz2}}{
+}
+}
 \source{
 The source data is hosted on https://d3c33hcgiwev3.cloudfront.net
 }
@@ -22,6 +26,9 @@ Read the Fatality Analysis Report Data
 This function raise errors when external library is not installed or invoked using library() function
 }
 \examples{
-fars_data <- fars_read("accident_2013.csv.bz2")
-
+\dontrun{
+ars_data <- fars_read("accident_2013.csv.bz2")
+ars_data <- fars_read("accident_2014.csv.bz2")
+ars_data <- fars_read("accident_2015.csv.bz2")
+}
 }
