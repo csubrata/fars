@@ -4,7 +4,6 @@
 #'
 #' @return This function returns a dataframe with Fatality Analysis report
 #'
-#' @format ## `accident_2013.csv.bz2`
 #' @source The source data is hosted on https://d3c33hcgiwev3.cloudfront.net
 #'
 #'
